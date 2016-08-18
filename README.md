@@ -57,6 +57,8 @@ Options:
   -w, [--write], [--no-write]  # Write the configuration to the file
   -f, [--file=FILE]            # Configuration file
                                # Default: Boardfile
+      [--color], [--no-color]  # Disable colorize
+                               # Default: true
 ```
 
 ### apply
