@@ -1,4 +1,5 @@
 require 'dogapi'
+require 'parallel'
 
 module Dashdog
   class Client
@@ -9,7 +10,7 @@ module Dashdog
 
     def get_timeboards
       ret = []
-      @api.get_dashboards[1]['dashes'].each do |bd|
+      Parallel.each(@api.get_dashboards[1]['dashes'], in_threads: 8)  do |bd|
         ret << @api.get_dashboard(bd['id'])[1]['dash']
       end
       return ret
@@ -17,7 +18,7 @@ module Dashdog
 
     def get_screenboards
       ret = []
-      @api.get_all_screenboards[1]['screenboards'].each do |bd|
+      Parallel.each(@api.get_all_screenboards[1]['screenboards'], in_threads: 8) do |bd|
         ret << @api.get_screenboard(bd['id'])[1]
       end
       return ret
