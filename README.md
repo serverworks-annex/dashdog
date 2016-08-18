@@ -1,5 +1,7 @@
 # Dashdog
 
+[![Gem Version](https://badge.fury.io/rb/dashdog.svg)](https://badge.fury.io/rb/dashdog)
+
 Datadog dashboards management tool with Ruby DSL.
 
 ## Installation
