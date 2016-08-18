@@ -38,7 +38,8 @@ module Dashdog
           if l == r
             info("#{dry_run}No changes '#{l['title']}'")
           else
-            warn("#{dry_run}Update the timeboard\n#{Dashdog::Utils.diff(r, l)}")
+            warn("#{dry_run}Update the timeboard '#{l['title']}'")
+            STDERR.puts Dashdog::Utils.diff(r, l)
             @client.update_timeboard(l) if dry_run.empty?
           end
         end
@@ -71,7 +72,8 @@ module Dashdog
           if l == r
             info("#{dry_run}No changes '#{l['board_title']}'")
           else
-            warn("#{dry_run}Update the screenboard '#{l['board_title']}'\n#{Dashdog::Utils.diff(r, l)}")
+            warn("#{dry_run}Update the screenboard '#{l['board_title']}'")
+            STDERR.puts Dashdog::Utils.diff(r, l)
             @client.update_screenboard(l) if dry_run.empty?
           end
         end
