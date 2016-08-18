@@ -6,7 +6,7 @@ require 'dashdog/version'
 Gem::Specification.new do |spec|
   spec.name          = "dashdog"
   spec.version       = Dashdog::VERSION
-  spec.authors       = ["Masashi Terui"]
+  spec.authors       = ["Serverworks Co.,Ltd."]
   spec.email         = ["terui@serverworks.co.jp"]
 
   spec.summary       = %q{Datadog dashboards management tool with Ruby DSL.}
