@@ -1,0 +1,117 @@
+timeboard "terui's TimeBoard 5 Aug 2016 11:46" do
+  read_only false
+  description "created by terui@serverworks.co.jp"
+  title "terui's TimeBoard 5 Aug 2016 11:46"
+  graphs do |*|
+    definition do
+      viz "timeseries"
+      requests do |*|
+        q "avg:system.load.1{*}"
+        aggregator "avg"
+        conditional_formats []
+        type "line"
+      end
+    end
+    title "Avg of system.load.1 over *"
+  end
+  graphs do |*|
+    definition do
+      style do
+        palette "green_to_orange"
+        paletteFlip false
+      end
+      group nil
+      noMetricHosts true
+      viz "hostmap"
+      scope nil
+      requests do |*|
+        q "avg:collection_timestamp{*} by {host}"
+        type "fill"
+      end
+      noGroupHosts true
+    end
+    title "Avg of collection_timestamp over * by host"
+  end
+  graphs do |*|
+    definition do
+      viz "query_value"
+      requests do |*|
+        q "avg:system.cpu.user{*}"
+        conditional_formats do |*|
+          palette "white_on_green"
+          comparator "<="
+          value "50"
+        end
+        conditional_formats do |*|
+          palette "white_on_yellow"
+          comparator ">"
+          value "50"
+        end
+        conditional_formats do |*|
+          palette "white_on_red"
+          comparator ">"
+          value "80"
+        end
+      end
+    end
+    title "Avg of system.cpu.user over *"
+  end
+  graphs do |*|
+    definition do
+      viz "timeseries"
+      requests do |*|
+        q "avg:aws.ebs.volume_write_ops{host:default-amazon-linux}"
+      end
+      events []
+    end
+    title "aws.ebs.volume_write_ops"
+  end
+end
+
+screenboard "terui's ScreenBoard 15 Aug 2016 15:39 test" do
+  read_only false
+  board_bgtype "board_graph"
+  original_title ""
+  height 80
+  width "100%"
+  template_variables []
+  widgets do |*|
+    title_size 16
+    title true
+    color "#4d4d4d"
+    text "Text Widget 2"
+    title_align "left"
+    text_align "left"
+    title_text ""
+    height 6
+    width 24
+    y 4
+    x 8
+    font_size "auto"
+    type "free_text"
+  end
+  widgets do |*|
+    title_size 16
+    title true
+    title_align "left"
+    title_text ""
+    height 13
+    tile_def do
+      viz "timeseries"
+      requests do |*|
+        q "avg:system.cpu.user{*}"
+        conditional_formats []
+        type "line"
+      end
+    end
+    width 47
+    timeframe "1h"
+    y 4
+    x 52
+    legend_size "0"
+    type "timeseries"
+    legend false
+  end
+  shared false
+  title_edited false
+end
