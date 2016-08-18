@@ -3,6 +3,7 @@ require 'thor'
 module Dashdog
   class Cli < Thor
     class_option :file, aliases: '-f', desc: 'Configuration file', type: :string, default: 'Boardfile'
+    class_option :color, desc: 'Disable colorize', type: :boolean, default: $stdout.tty?
 
     def initialize(*args)
       @actions = Dashdog::Actions.new

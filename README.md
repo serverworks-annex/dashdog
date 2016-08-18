@@ -38,6 +38,8 @@ Commands:
 Options:
   -f, [--file=FILE]  # Configuration file
                      # Default: Boardfile
+      [--color], [--no-color]  # Disable colorize
+                               # Default: true
 ```
 
 ## Commands

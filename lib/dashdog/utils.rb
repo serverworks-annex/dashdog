@@ -20,8 +20,12 @@ module Dashdog
       puts CodeRay.scan(yaml, :yaml).terminal
     end
 
-    def self.print_ruby(ruby)
-      puts CodeRay.scan(ruby, :ruby).terminal
+    def self.print_ruby(ruby, options = {})
+      if options[:color]
+        puts CodeRay.scan(ruby, :ruby).terminal
+      else
+        puts ruby
+      end
     end
 
     def self.print_json(json)
