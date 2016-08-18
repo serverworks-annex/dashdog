@@ -13,7 +13,7 @@ module Dashdog
     def export(options)
       dsl = @converter.timeboards_to_dsl(@client.get_timeboards)
       dsl << @converter.screenboards_to_dsl(@client.get_screenboards)
-      Dashdog::Utils.print_ruby(dsl)
+      Dashdog::Utils.print_ruby(dsl, color: options[:color])
       File.write(options['file'], dsl) if options['write']
     end
 
