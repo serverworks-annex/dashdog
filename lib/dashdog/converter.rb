@@ -40,7 +40,7 @@ EOS
       screenboards.each do |sb|
         title = sb['board_title']
         DELETE_KEYS.each {|k| sb.delete(k) }
-        widgets = sb['widgets']
+        widgets = sb['widgets'] || []
         sb['widgets'] = []
         widgets.each do |wd|
           wd.delete('board_id')
