@@ -46,7 +46,7 @@ module Dashdog
 
     def dslh_eval(block)
       scope_hook = proc do |scope|
-        scope.instance_eval(<<-EOS)
+        scope.instance_eval(<<-'EOS')
           def include_template(template_name, context = {})
             tmplt = @templates[template_name.to_s]
 
