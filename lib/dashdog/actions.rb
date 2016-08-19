@@ -109,7 +109,7 @@ module Dashdog
 
         dsls.each do |splitted|
           splitted.strip!
-          title = splitted.each_line.first.strip.gsub(/\A(?:timeboard|screenboard)\s+"([^"]+)"\sdo+/, '\\1')
+          title = splitted.each_line.first.strip.gsub(/\A(?:timeboard|screenboard)\s+"([^"]+)"\s+do/, '\\1')
           title.gsub!(/\W+/, '_')
           requires << title
           File.write("#{title}.rb", splitted + "\n")
