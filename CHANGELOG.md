@@ -1,9 +1,13 @@
+## 0.2.0
+
+- Add `split` opton [#4][] ([@winebarrel][])
+
 ## 0.1.1
 
 - Add color option / check stdout tty [#3][] ([@winebarrel][])
 - Use parallel for speeding up [#2][] ([@winebarrel][])
 - Bugfix: Error occurs when widgets is nil. [#1][] ([@winebarrel][])
-- Fix strange diff colorize
+- Fix a strange diff colorize
 
 ## 0.1.0
 
@@ -13,4 +17,5 @@
 [#1]: https://github.com/serverworks/dashdog/issues/1
 [#2]: https://github.com/serverworks/dashdog/issues/2
 [#3]: https://github.com/serverworks/dashdog/issues/3
+[#4]: https://github.com/serverworks/dashdog/issues/4
 [@winebarrel]: https://github.com/winebarrel
