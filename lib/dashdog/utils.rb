@@ -7,8 +7,8 @@ module Dashdog
 
     def self.diff(hash1, hash2)
       Diffy::Diff.new(
-        JSON.pretty_generate(hash1),
-        JSON.pretty_generate(hash2),
+        JSON.pretty_generate(hash1) + "\n",
+        JSON.pretty_generate(hash2) + "\n",
         :diff => '-u'
       ).to_s(:color)
     end
