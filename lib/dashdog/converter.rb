@@ -60,12 +60,25 @@ EOS
       ret
     end
 
-    def to_h(dsl)
-      instance_eval(dsl)
+    def to_h(dsl_file)
+      @_dsl_file = dsl_file
+      instance_eval(File.read(dsl_file), dsl_file)
       @boards
     end
 
     private
+
+    def require(file)
+      boardfile = (file =~ %r|\A/|) ? file : File.expand_path(File.join(File.dirname(@_dsl_file), file))
+
+      if File.exist?(boardfile)
+        instance_eval(File.read(boardfile), boardfile)
+      elsif File.exist?(boardfile + '.rb')
+        instance_eval(File.read(boardfile + '.rb'), boardfile + '.rb')
+      else
+        Kernel.require(file)
+      end
+    end
 
     def timeboard(value = nil, &block)
       hash = Dslh.eval(

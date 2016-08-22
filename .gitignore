@@ -9,3 +9,5 @@
 /tmp/
 /vendor
 .envrc
+Boardfile
+/*.rb

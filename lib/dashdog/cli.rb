@@ -12,6 +12,7 @@ module Dashdog
 
     desc "export", "Export the dashboard configurations"
     option :write, aliases: '-w', desc: 'Write the configuration to the file', type: :boolean, default: false
+    option :split, desc: 'Split configuration file', type: :boolean, default: false
     def export
       @actions.export(options)
     end

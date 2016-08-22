@@ -13,17 +13,22 @@ module Dashdog
     def export(options)
       dsl = @converter.timeboards_to_dsl(@client.get_timeboards)
       dsl << @converter.screenboards_to_dsl(@client.get_screenboards)
-      Dashdog::Utils.print_ruby(dsl, color: options[:color])
-      File.write(options['file'], dsl) if options['write']
+      if options['write']
+        _export_to_file(dsl, options)
+      else
+        Dashdog::Utils.print_ruby(dsl, color: options[:color])
+      end
     end
 
     def apply(options)
       dry_run = options['dry_run'] ? '[Dry run] ' : ''
-      conf = @converter.to_h(File.read(options['file']))
+      conf = @converter.to_h(options['file'])
 
       _apply_timeboards(conf['timeboards'], @client.get_timeboards, dry_run)
       _apply_screenboards(conf['screenboards'], @client.get_screenboards, dry_run)
     end
+
+    private
 
     def _apply_timeboards(local, remote, dry_run)
       local.each do |l|
@@ -95,5 +100,31 @@ module Dashdog
       nil
     end
 
+    def _export_to_file(dsl, options)
+      file = options['file']
+
+      if options['split']
+        dsls = dsl.strip.split(/^(timeboard|screenboard)\b/).slice(1..-1).each_slice(2).map(&:join)
+        requires = []
+
+        dsls.each do |splitted|
+          splitted.strip!
+          title = splitted.each_line.first.strip.gsub(/\A(?:timeboard|screenboard)\s+"([^"]+)"\s+do/, '\\1')
+          title.gsub!(/\W+/, '_')
+          requires << title
+          File.write("#{title}.rb", splitted + "\n")
+          info("Write '#{title}.rb'")
+        end
+
+        open(file, 'w') do |f|
+          requires.each {|r| f.puts "require #{r.inspect}" }
+        end
+
+        info("Write '#{file}'")
+      else
+        File.write(file, dsl)
+        info("Write '#{file}'")
+      end
+    end
   end
 end
