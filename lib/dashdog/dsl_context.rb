@@ -20,6 +20,10 @@ module Dashdog
       @templates[name.to_s] = block
     end
 
+    def context
+      @context
+    end
+
     def require(file)
       boardfile = (file =~ %r|\A/|) ? file : File.expand_path(File.join(File.dirname(@_dsl_file), file))
 
