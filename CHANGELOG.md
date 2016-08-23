@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Add template support [#5][] ([@winebarrel][])
+- Diff the sorted json [#6][] ([@winebarrel][])
+
 ## 0.2.0
 
 - Add `split` opton [#4][] ([@winebarrel][])
@@ -18,4 +23,6 @@
 [#2]: https://github.com/serverworks/dashdog/issues/2
 [#3]: https://github.com/serverworks/dashdog/issues/3
 [#4]: https://github.com/serverworks/dashdog/issues/4
+[#5]: https://github.com/serverworks/dashdog/issues/5
+[#6]: https://github.com/serverworks/dashdog/issues/6
 [@winebarrel]: https://github.com/winebarrel
