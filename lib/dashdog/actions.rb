@@ -63,7 +63,7 @@ module Dashdog
         r = _choice_by_title(remote, l['board_title'])
         if r.nil?
           info("#{dry_run}Create the new screenboards '#{l['board_title']}'")
-          @client.create_screenboard(l) unless dry_run.empty?
+          @client.create_screenboard(l) if dry_run.empty?
         else
           l['id'] = r['id']
           r.delete('created')
