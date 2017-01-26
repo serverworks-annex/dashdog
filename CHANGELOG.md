@@ -1,3 +1,8 @@
+## 0.3.1
+
+- Bugfix: Fix nil exception when widgets is empty [#8][] ([@n0ts][])
+- Bugfix: The screenboard will be created at dryrun [#7][] ([@n0ts][])
+
 ## 0.3.0
 
 - Add template support [#5][] ([@winebarrel][])
