@@ -68,12 +68,13 @@ module Dashdog
           l['id'] = r['id']
           r.delete('created')
           r.delete('modified')
-          widgets = r['widgets']
+          widgets = r['widgets'] || []
           r['widgets'] = []
           widgets.each do |wd|
             wd.delete('board_id')
             r['widgets'] << wd
           end
+          l['widgets'] = [] if widgets.empty?
           if l == r
             info("#{dry_run}No changes '#{l['board_title']}'")
           else
