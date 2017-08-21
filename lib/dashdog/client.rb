@@ -45,7 +45,7 @@ module Dashdog
 
     def delete_timeboard(id)
       ret = @api.delete_dashboard(id)
-      raise RuntimeError, ret[1]['errors'] if ret[0] != '200'
+      raise RuntimeError, ret[1]['errors'] if ret[0] != '204'
     end
 
     def create_screenboard(sb)
