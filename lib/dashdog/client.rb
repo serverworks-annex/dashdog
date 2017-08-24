@@ -10,7 +10,7 @@ module Dashdog
 
     def get_timeboards
       ret = []
-      Parallel.each(@api.get_dashboards[1]['dashes'], in_threads: 8)  do |bd|
+      Parallel.each(@api.get_dashboards[1]['dashes'], in_threads: 4)  do |bd|
         ret << @api.get_dashboard(bd['id'])[1]['dash']
       end
       return ret
@@ -18,7 +18,7 @@ module Dashdog
 
     def get_screenboards
       ret = []
-      Parallel.each(@api.get_all_screenboards[1]['screenboards'], in_threads: 8) do |bd|
+      Parallel.each(@api.get_all_screenboards[1]['screenboards'], in_threads: 4) do |bd|
         ret << @api.get_screenboard(bd['id'])[1]
       end
       return ret
