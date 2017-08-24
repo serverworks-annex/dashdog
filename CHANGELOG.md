@@ -1,3 +1,9 @@
+## 0.3.2
+
+- Bugfix: `delete timeboard` API returns 204 when the deletion was successful [#9][] ([@aibou][])
+- Decrease the `get (time|screen)boards` API parallelism
+- Fix some meassages
+
 ## 0.3.1
 
 - Bugfix: Fix nil exception when widgets is empty [#8][] ([@n0ts][])
@@ -30,4 +36,9 @@
 [#4]: https://github.com/serverworks/dashdog/issues/4
 [#5]: https://github.com/serverworks/dashdog/issues/5
 [#6]: https://github.com/serverworks/dashdog/issues/6
+[#7]: https://github.com/serverworks/dashdog/issues/7
+[#8]: https://github.com/serverworks/dashdog/issues/8
+[#9]: https://github.com/serverworks/dashdog/issues/9
+[@aibou]: https://github.com/aibou
+[@n0ts]: https://github.com/n0ts
 [@winebarrel]: https://github.com/winebarrel
