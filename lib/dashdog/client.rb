@@ -45,7 +45,7 @@ module Dashdog
 
     def delete_timeboard(id)
       ret = @api.delete_dashboard(id)
-      raise RuntimeError, ret[1]['errors'] if ret[0] != '204'
+      raise RuntimeError, ret[1]['errors'] unless ['200', '204'].include?(ret[0])
     end
 
     def create_screenboard(sb)
@@ -62,7 +62,7 @@ module Dashdog
 
     def delete_screenboard(id)
       ret = @api.delete_screenboard(id)
-      raise RuntimeError, ret[1]['errors'] if ret[0] != '200'
+      raise RuntimeError, ret[1]['errors'] unless ['200', '204'].include?(ret[0])
     end
   end
 end
