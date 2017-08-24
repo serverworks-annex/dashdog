@@ -87,7 +87,7 @@ module Dashdog
 
       remote.each do |r|
         if _choice_by_title(local, r['board_title']).nil?
-          warn("#{dry_run}Delete the timeboard '#{r['board_title']}'")
+          warn("#{dry_run}Delete the screenboard '#{r['board_title']}'")
           @client.delete_screenboard(r['id']) if dry_run.empty?
         end
       end
