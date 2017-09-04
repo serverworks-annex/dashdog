@@ -38,8 +38,10 @@ module Dashdog
           @client.create_timeboard(l) if dry_run.empty?
         else
           l['id'] = r['id']
-          r.delete('created')
-          r.delete('modified')
+          ['created', 'modified', 'created_by'].each do |field|
+            r.delete(field)
+            l.delete(field)
+          end
           if l == r
             info("#{dry_run}No changes '#{l['title']}'")
           else
@@ -66,8 +68,10 @@ module Dashdog
           @client.create_screenboard(l) if dry_run.empty?
         else
           l['id'] = r['id']
-          r.delete('created')
-          r.delete('modified')
+          ['created', 'modified', 'created_by'].each do |field|
+            r.delete(field)
+            l.delete(field)
+          end
           widgets = r['widgets'] || []
           r['widgets'] = []
           widgets.each do |wd|

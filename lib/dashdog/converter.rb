@@ -1,6 +1,6 @@
 require 'dslh'
 
-DELETE_KEYS = ['id', 'board_title', 'created', 'modified']
+DELETE_KEYS = ['id', 'board_title', 'created', 'modified', 'created_by']
 
 module Dashdog
   class Converter
