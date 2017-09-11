@@ -1,3 +1,7 @@
+## 0.3.3
+
+- Exclude 'created_by' key because it is always overwritten in owner info of API key [#10][] ([@aibou][])
+
 ## 0.3.2
 
 - Bugfix: `delete timeboard` API returns 204 when the deletion was successful [#9][] ([@aibou][])
