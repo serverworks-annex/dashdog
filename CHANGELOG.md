@@ -1,3 +1,7 @@
+## 0.3.4
+
+- Stop warning when execute `dashdog apply` [#11][] ([@aibou][])
+
 ## 0.3.3
 
 - Exclude 'created_by' key because it is always overwritten in owner info of API key [#10][] ([@aibou][])
@@ -6,7 +10,7 @@
 
 - Bugfix: `delete timeboard` API returns 204 when the deletion was successful [#9][] ([@aibou][])
 - Decrease the `get (time|screen)boards` API parallelism
-- Fix some meassages
+- Fix some messages
 
 ## 0.3.1
 
@@ -43,6 +47,8 @@
 [#7]: https://github.com/serverworks/dashdog/issues/7
 [#8]: https://github.com/serverworks/dashdog/issues/8
 [#9]: https://github.com/serverworks/dashdog/issues/9
+[#10]: https://github.com/serverworks/dashdog/issues/10
+[#11]: https://github.com/serverworks/dashdog/issues/11
 [@aibou]: https://github.com/aibou
 [@n0ts]: https://github.com/n0ts
 [@winebarrel]: https://github.com/winebarrel
