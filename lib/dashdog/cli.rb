@@ -18,7 +18,7 @@ module Dashdog
     end
 
     desc "apply", "Apply the dashboard configurations"
-    option :dry_run, aliases: '-d', desc: 'Dry run (Only output the difference)', type: :string, default: false
+    option :dry_run, aliases: '-d', desc: 'Dry run (Only display the difference)', type: :boolean, default: false
     def apply
       @actions.apply(options)
     end
