@@ -70,9 +70,12 @@ Usage:
   dashdog apply
 
 Options:
-  -d, [--dry-run=DRY_RUN]  # Dry run (Only output the difference)
-  -f, [--file=FILE]        # Configuration file
-                           # Default: Boardfile
+  -d, [--dry-run], [--no-dry-run]      # Dry run (Only display the difference)
+  -f, [--file=FILE]                    # Configuration file
+                                       # Default: Boardfile
+      [--color], [--no-color]          # Disable colorize
+                                       # Default: true
+  -e, [--exclude-title=EXCLUDE_TITLE]  # Exclude patterns of title
 ```
 
 ## Development
@@ -91,4 +94,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Copyright
 
-Copyright (c) 2016 Serverworks Co.,Ltd. See [LICENSE](https://github.com/serverworks/dashdog/blob/master/LICENSE.txt) for details.
+Copyright (c) 2016-2018 Serverworks Co.,Ltd. See [LICENSE](https://github.com/serverworks/dashdog/blob/master/LICENSE.txt) for details.

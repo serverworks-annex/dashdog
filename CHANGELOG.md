@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Add `exclude-title` option [#12][] ([@aibou][])
+
 ## 0.3.4
 
 - Stop warning when execute `dashdog apply` [#11][] ([@aibou][])
@@ -49,6 +53,7 @@
 [#9]: https://github.com/serverworks/dashdog/issues/9
 [#10]: https://github.com/serverworks/dashdog/issues/10
 [#11]: https://github.com/serverworks/dashdog/issues/11
+[#12]: https://github.com/serverworks/dashdog/issues/12
 [@aibou]: https://github.com/aibou
 [@n0ts]: https://github.com/n0ts
 [@winebarrel]: https://github.com/winebarrel
