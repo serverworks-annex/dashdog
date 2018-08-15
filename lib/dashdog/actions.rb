@@ -24,14 +24,15 @@ module Dashdog
       dry_run = options['dry_run'] ? '[Dry run] ' : ''
       conf = @converter.to_h(options['file'])
 
-      _apply_timeboards(conf['timeboards'], @client.get_timeboards, dry_run)
-      _apply_screenboards(conf['screenboards'], @client.get_screenboards, dry_run)
+      _apply_timeboards(conf['timeboards'], @client.get_timeboards, dry_run, options)
+      _apply_screenboards(conf['screenboards'], @client.get_screenboards, dry_run, options)
     end
 
     private
 
-    def _apply_timeboards(local, remote, dry_run)
+    def _apply_timeboards(local, remote, dry_run, options)
       local.each do |l|
+        next if !options['exclude_title'].nil? && l['title'].match(options['exclude_title'])
         r = _choice_by_title(remote, l['title'])
         if r.nil?
           info("#{dry_run}Create the new timeboard '#{l['title']}'")
@@ -53,6 +54,7 @@ module Dashdog
       end
 
       remote.each do |r|
+        next if !options['exclude_title'].nil? && r['title'].match(options['exclude_title'])
         if _choice_by_title(local, r['title']).nil?
           warn("#{dry_run}Delete the timeboard '#{r['title']}'")
           @client.delete_timeboard(r['id']) if dry_run.empty?
@@ -60,8 +62,9 @@ module Dashdog
       end
     end
 
-    def _apply_screenboards(local, remote, dry_run)
+    def _apply_screenboards(local, remote, dry_run, options)
       local.each do |l|
+        next if !options['exclude_title'].nil? && l['title'].match(options['exclude_title'])
         r = _choice_by_title(remote, l['board_title'])
         if r.nil?
           info("#{dry_run}Create the new screenboards '#{l['board_title']}'")
@@ -90,6 +93,7 @@ module Dashdog
       end
 
       remote.each do |r|
+        next if !options['exclude_title'].nil? && r['title'].match(options['exclude_title'])
         if _choice_by_title(local, r['board_title']).nil?
           warn("#{dry_run}Delete the screenboard '#{r['board_title']}'")
           @client.delete_screenboard(r['id']) if dry_run.empty?
