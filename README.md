@@ -70,12 +70,13 @@ Usage:
   dashdog apply
 
 Options:
-  -d, [--dry-run], [--no-dry-run]      # Dry run (Only display the difference)
-  -f, [--file=FILE]                    # Configuration file
-                                       # Default: Boardfile
-      [--color], [--no-color]          # Disable colorize
-                                       # Default: true
-  -e, [--exclude-title=EXCLUDE_TITLE]  # Exclude patterns of title
+  -d, [--dry-run], [--no-dry-run]            # Dry run (Only display the difference)
+      [--force-create], [--no-force-create]  # Force to create new dashboard
+  -f, [--file=FILE]                          # Configuration file
+                                             # Default: Boardfile
+      [--color], [--no-color]                # Disable colorize
+                                             # Default: true
+  -e, [--exclude-title=EXCLUDE_TITLE]        # Exclude patterns of title
 ```
 
 ## Development
