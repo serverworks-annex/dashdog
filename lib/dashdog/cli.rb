@@ -19,8 +19,8 @@ module Dashdog
     end
 
     desc "apply", "Apply the dashboard configurations"
-    option :dry_run, aliases: '-d', desc: 'Dry run (Only display the difference)', type: :boolean, default: false
-    option :force_create,           desc: 'Force to create new dashboard',         type: :boolean, default: false
+    option :dry_run, aliases: '-d', desc: 'Dry run (Only display the difference)',          type: :boolean, default: false
+    option :ignore_exists,          desc: 'Create new dashboards ignoring existing boards', type: :boolean, default: false
     def apply
       @actions.apply(options)
     end
