@@ -13,13 +13,14 @@ module Dashdog
 
     desc "export", "Export the dashboard configurations"
     option :write, aliases: '-w', desc: 'Write the configuration to the file', type: :boolean, default: false
-    option :split, desc: 'Split configuration file', type: :boolean, default: false
+    option :split,                desc: 'Split configuration file',            type: :boolean, default: false
     def export
       @actions.export(options)
     end
 
     desc "apply", "Apply the dashboard configurations"
-    option :dry_run, aliases: '-d', desc: 'Dry run (Only display the difference)', type: :boolean, default: false
+    option :dry_run, aliases: '-d', desc: 'Dry run (Only display the difference)',          type: :boolean, default: false
+    option :ignore_exists,          desc: 'Create new dashboards ignoring existing boards', type: :boolean, default: false
     def apply
       @actions.apply(options)
     end

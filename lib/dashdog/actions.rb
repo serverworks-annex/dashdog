@@ -34,7 +34,7 @@ module Dashdog
       local.each do |l|
         next if !options['exclude_title'].nil? && l['title'].match(options['exclude_title'])
         r = _choice_by_title(remote, l['title'])
-        if r.nil?
+        if r.nil? || options['ignore_exists']
           info("#{dry_run}Create the new timeboard '#{l['title']}'")
           @client.create_timeboard(l) if dry_run.empty?
         else
@@ -54,7 +54,7 @@ module Dashdog
       end
 
       remote.each do |r|
-        next if !options['exclude_title'].nil? && r['title'].match(options['exclude_title'])
+        next if (!options['exclude_title'].nil? && r['title'].match(options['exclude_title'])) || options['ignore_exists']
         if _choice_by_title(local, r['title']).nil?
           warn("#{dry_run}Delete the timeboard '#{r['title']}'")
           @client.delete_timeboard(r['id']) if dry_run.empty?
@@ -66,7 +66,7 @@ module Dashdog
       local.each do |l|
         next if !options['exclude_title'].nil? && l['title'].match(options['exclude_title'])
         r = _choice_by_title(remote, l['board_title'])
-        if r.nil?
+        if r.nil? || options['ignore_exists']
           info("#{dry_run}Create the new screenboards '#{l['board_title']}'")
           @client.create_screenboard(l) if dry_run.empty?
         else
@@ -93,7 +93,7 @@ module Dashdog
       end
 
       remote.each do |r|
-        next if !options['exclude_title'].nil? && r['title'].match(options['exclude_title'])
+        next if (!options['exclude_title'].nil? && r['title'].match(options['exclude_title'])) || options['ignore_exists']
         if _choice_by_title(local, r['board_title']).nil?
           warn("#{dry_run}Delete the screenboard '#{r['board_title']}'")
           @client.delete_screenboard(r['id']) if dry_run.empty?
